@@ -29,8 +29,8 @@
                     $telefono = $_POST['telefono'];
                     $correo = $_POST['correo'];
                     //Verifica la integridad de la información o si concuerdan las contraseñas
-                    $queryBuscar = "SELECT * FROM responsable_tutorias
-                    WHERE '$id' = numero_cuenta";
+                    $queryBuscar = "SELECT * FROM responsabletutorias
+                    WHERE '$id' = numeroCuenta";
                     if($result = mysqli_query($con,$queryBuscar))
                     {
                         if($existeUsuario = mysqli_fetch_array($result, MYSQLI_NUM))
@@ -75,7 +75,7 @@
                     if($error != "") header("Location:regTutor.php?error=$error");
                     else
                     {
-                        $queryInsertar = "INSERT INTO responsable_tutorias(numero_cuenta,password,nombre,correo,celular)
+                        $queryInsertar = "INSERT INTO responsabletutorias(numeroCuenta,password,nombre,correo,celular)
                         VALUES('$id','$pass','$nombre','$correo','$telefono')";
                         if($query = mysqli_query($con,$queryInsertar))
                         {
