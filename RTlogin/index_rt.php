@@ -1,18 +1,3 @@
-<?php
-include("header.php");
-require 'conexion.php';
-if(isset($_SESSION['numCuenta'])){
-  $conn=new mysqli($servidor, $usuario, $pwd, $bd);
-  $numCuenta = $_SESSION['asesor'];
-  $total = mysqli_num_rows(mysqli_query($conn,"SELECT numCuenta FROM estudiante WHERE numCuenta='$numCuenta'"));
-  if($total>0){
-    header("Location: asesores.php");
-}
-elseif(isset($_SESSION['numCuenta'])){
-
-}
-else{ echo '
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +8,7 @@ else{ echo '
   }
 <style>
 body {
-   font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+   font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif';
 	
 }
 form {
@@ -110,6 +95,7 @@ text-align: center;
 .left {
   left: 0;
   background-color: #FFFFFF;
+/* aqui le puedes poner la imagen de fondo BENNY*/
 
 }
 
@@ -136,45 +122,36 @@ background-color: #2384d5;
 </style>
 </head>
 <body>
-
-
-
+	
 	<div class="split left">
   	
      <img src="Lo.jpg">
   </div>
 </div>
 
-
 <div class="split right">
 	
-  <div class="centered">
-
-
-
+<div class="centered">
+	
 <h1 style="text-align: center; color: white">INICIA SESIÓN</h1><br>
-<form action="includes/login.inc.php" method="post">
-  <div class="inputContainer">
-  <i class="fa material-icons icon">person_outline</i>
-  <input class="Field" type="text" placeholder="Numero de cuenta" name="num"/>
-  </div>
-  <div class="inputContainer">
-  <i class="fa material-icons icon">lock_open</i>
-  <input class="Field" type="password" placeholder="Contraseña" name="contrasena"/>
-  </div>
-    <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Recordarme</label>    <a href="url"><br>Olvidé mi contraseña </a><br><br>
-    <input type="submit" name="login-submit" value="Iniciar Sesión" onclick="lsRememberMe()">
+<form action="authenticate_rt.php" method="POST">
+<div class="inputContainer">
+<i class="fa material-icons icon">person_outline</i>
+<input class="Field" type="text" name="username" placeholder="Usuario" />
+</div>  
+<div class="inputContainer">
+<i class="fa material-icons icon">lock_open</i>
+<input class="Field" type="password" name="password" placeholder="Contraseña" />
+</div>
 
-
-      <div class="container">
-    <div class="column-left"><a href="registro_estudiantes.php">Registrarme como estudiante</a></div>
-    <div class="column-center">Crea una cuenta</div>
-    <div class="column-right"><a href="registroAsesor/regAsesor.php">Registrarme como asesor</a></div><br><br><br>
+  <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Recordarme</label>   
+  
+  <input type="submit" value="Iniciar Sesión" onclick="lsRememberMe()">
+  <a href="../registroTutor/regTutor.php"><br>Registrarme como RT </a><br><br>
 </form>
   </div>
 </div>
 </div>
 
 </body>
-</html> '
-;} ?>
+</html>
