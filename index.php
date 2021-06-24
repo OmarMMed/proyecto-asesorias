@@ -1,15 +1,15 @@
 <?php
 include("header.php");
 require 'conexion.php';
-if(isset($_SESSION['numCuenta'])){
-  $conn=new mysqli($servidor, $usuario, $pwd, $bd);
-  $numCuenta = $_SESSION['asesor'];
-  $total = mysqli_num_rows(mysqli_query($conn,"SELECT numCuenta FROM estudiante WHERE numCuenta='$numCuenta'"));
-  if($total>0){
-    header("Location: asesores.php");
-}
-elseif(isset($_SESSION['numCuenta'])){
+if(isset($_SESSION['asesor'])){
+  header("Location: asesores.php");
 
+}
+elseif(isset($_SESSION['estudiante'])){
+  header("Location: estudiantes.php");
+}
+elseif(isset($_SESSION['rt'])){
+  header("Location: rt.php");
 }
 else{ echo '
 
