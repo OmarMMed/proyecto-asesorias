@@ -1,0 +1,135 @@
+-----------------Asesores-----------------
+CREATE TABLE Asesores
+(  
+    id int NOT NULL primary key AUTO_INCREMENT,
+    nombre varchar(50) NOT NULL,
+    telefono VARCHAR (10) NOT NULL,
+    correo varchar(255) NOT NULL,
+    carrera varchar(40) NOT NULL,
+    grado TINYINT   NOT NULL,
+    grupo TINYINT   NOT NULL,
+    horario TIME NOT NULL,
+    dias_disponibles VARCHAR (70) NOT NULL 
+) default charset utf8 comment '';
+----------------Materias----------------
+CREATE TABLE Materias 
+(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nombreMateria VARCHAR(70) NOT NULL, 
+    semestre TINYINT NOT NULL, 
+    categorias VARCHAR(70) NOT NULL
+) default charset utf8 comment '';
+
+ALTER TABLE tbl AUTO_INCREMENT = 100;
+
+----------Materias Impartidas-------------
+CREATE TABLE MateriasImpartidas(  
+    idAsesor int NOT NULL,
+    idMateria int NOT NULL,
+    disponibilidad CHAR,
+    FOREIGN KEY (idAsesor) REFERENCES asesores(id),
+    FOREIGN KEY (idMateria) REFERENCES materias(ID)
+) default charset utf8 comment '';
+
+----------responsable_tutorias-------------
+CREATE TABLE responsable_tutorias (
+numero_cuenta varchar(8) NOT NULL PRIMARY KEY,
+password varchar(20) NOT NULL,
+nombre varchar(50) NOT NULL,
+correo varchar(50) NOT NULL,
+celular varchar(10) NOT NULL
+)default charset utf8 comment '';
+
+----------------Llenar Materias-------------
+INSERT INTO Materias (nombreMateria, semestre, categorias)
+VALUES ("Algoritmia",1,"Programacion e Informatica"),
+("Desarrollo Organizacional",1,"Entorno Social"),
+("Arquitectura de Computadoras",1,"Arquitectura de Computadoras"),
+("Matemáticas Discretas",1,"Matematicas"),
+("Desarrollo de Habilidades Cognitivas",1,"Entorno Social")
+("Algebra",1,"ITSE"),
+("Algoritmos y Programacion Estructurada",1,"ITSE"),
+("Calculo Diferencial e Integral",1,"ITSE"),
+("Comunicacion Oral y Escrita",1,"ITSE"),
+("Geometria Analitica",1,"ITSE"),
+("Simulacion de Sistemas",1,"ITSE"),
+("Analisis y Diseño Orientado a Objetos",2,"Programacion e Informatica"),
+("Topicos de Manejo Financiero",2,"Entorno Social"),
+("Sistemas Digitales y Electronica",2,"Arquitectura de Computadoras"),
+("Probabilidad y Estadistica",2,"Matematicas"),
+("Metodologia de la Informacion",2,"Entorno Social"),
+("Calculo Vectorial",2,"ITSE"),
+("Estatica",2,"ITSE"),
+("Estructuras de Datos",2,"ITSE"),
+("Etica Profesional",2,"ITSE"),
+("Sistemas Operativos",2,"ITSE"),
+("Transformadas Especiales",2,"ITSE"),
+("Lenguajes de Programacion",3,"Programacion e Informatica"),
+("Ingenieria de Software",3,"Programacion e Informatica"),
+("Fundamentos de Base de Datos",3,"Tratamiento de la Informatica"),
+("Algebra Lineal",3,"Matematicas"),
+("Medio Ambiente y Desarrollo Sustentable",3,"Entorno Social"),
+("Cinematica y Dinamica",3,"ITSE"),
+("Ecuaciones Diferenciales y en Diferencias",3,"ITSE"),
+("Electricidad y Magnetismo",3,"ITSE"),
+("Ingenieria de Software",3,"ITSE"),
+("Neumatica e Hidraulica",3,"ITSE"),
+("Estructura de Datos",4,"Tratamiento de la Informatica"),
+("Fundamentos de Redes",4,"Redes"),
+("Analisis y Diseño de Software",4,"Tratamiento de la Informatica"),
+("Matematicas Aplicadas",4,"Matematicas"),
+("Manejadores y Lenguajes de Consulta de Datos",4,"Tratamiento de la Informatica"),
+("Fundamentos de Termodinamica",4,"ITSE"),
+("Optica y Acustica",4,"ITSE"),
+("Comercializacion en Tecnologias de Informacion, Automatizacion y Electronica",4,"ITSE"),
+("Aspectos Básicos en el Desarrollo Empresarial",4,"ITSE"),
+("Circuitos Electricos",4,"ITSE"),
+("Principios de Diseño de Interfaz de Usuario",5,"Interacion Hombre-Maquina"),
+("Redes de Computadoras",5,"Redes"),
+("Desarrollo e Implementacion de Sistemas",5,"Tratamiento de la Informatica"),
+("Geometria Analitica y Graficacion",5,"Matematicas"),
+("Gestion de Unidades Informaticas",5,"Entorno Social"),
+("Bases de Datos",5,"ITSE"),
+("Prababilidad y Estadistica",5,"ITSE"),
+("Dispositivos y Circuitos Electronicos",5,"ITSE"),
+("Sistemas Digitales",5,"ITSE"),
+("Teoria Electromagnetica",5,"ITSE"),
+("Programacion de Servidores Web",6,"Programacion e Informatica"),
+("Administracion de Redes",6,"Redes"),
+("Sistemas de Informacion",6,"Tratamiento de la Informatica"),
+("Seminario de Creatividad e Innovacion",6,"Entorno Social"),
+("Redaccion de Textos en ingles",6,"Entorno Social"),
+("Ingenieria de Control",6,"ITSE"),
+("Maquinas Electricas",6,"ITSE"),
+("Amplificacion de Señales",6,"ITSE"),
+("Sistemas Analogicos",6,"ITSE"),
+("Fundamentos de Sistemas de Comunicaciones",6,"ITSE"),
+("Programacion de Servidores Web",7,"Programacion e Informatica"),
+("Infraestructura Informatica",7,"Software Base"),
+("Innovacion Tecnologica",7,"Programacion e Informatica"),
+("Optativa I",7,"Optativa"),
+("Administracion de Proyectos de Software",7,"Entorno Social"),
+("Sistemas de Datos Muestreados",7,"ITSE"),
+("Microprocesadores",7,"ITSE"),
+("Comunicaciones Digitales",7,"ITSE"),
+("Electronica Analogica",7,"ITSE"),
+("Telefonia Digital",7,"ITSE"),
+("Inteligencia Artificial",8,"Interacion Hombre-Maquina"),
+("Sistemas Operativos",8,"Software Base"),
+("Modelos de Calidad de Software",8,"Programacion e Informatica"),
+("Optativa II Temas Selectos",8,"Optativa"),
+("Optativa II Seguridad de software",8,"Optativa"),
+("Manejo Economico",8,"Entorno Social"),
+("Sistemas de Audio y Video",8,"ITSE"),
+("Dispositivos Logicos Programables",8,"ITSE"),
+("Microcontroladores",8,"ITSE"),
+("Control Digital",8,"ITSE"),
+("Transmision de Datos",8,"ITSE"),
+("Emprendedores",9,"Entorno Social"),
+("Sistemas Distribuidos",9,"Software Base"),
+("Optativa III",9,"Optativa"),
+("Optativa IV",9,"Optativa"),
+("Etica y Normativa Juridica",9,"Entorno Social"),
+("Asignatura obligatoria de eleccion",9,"ITSE"),
+("Asignaturas optativas",9,"ITSE");
+

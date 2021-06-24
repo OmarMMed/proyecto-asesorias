@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Raleway&display=swap');
+body{
+    font-family: 'Raleway', sans-serif;
+}
+
+.contenedor {
+    margin: auto;
+    width: 50%;
+    border: 3px solid #003B8E;
+    border-radius: 3px;
+    padding: 10px;
+    padding-left: 50px;
+}
+
+.contenedor h2{
+    text-align: center;
+    font-size: 24pt;
+}
+
+.contenedor input[type=text], input[type=email]
+{
+    width: 60%;
+    height: 15pt;
+}
+
+.contenedor select{
+    height: 20pt;
+}
+
+.contenedor select[multiple]
+{
+    height:auto;
+}
+.contenedor input[type=submit]
+{
+    float: inline-end;
+    margin-left: 530px;
+    right: 0;
+    bottom: 15px;
+    margin-top: 10px;
+    height: 35px;
+    font-size: 15pt;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-width: 1px;
+    border-radius: 3px;
+    border-color: #003B8E;
+    background: #003B8E;
+    color: white;
+}
+
+.contenedor input[type=submit]:hover
+{
+    border-color: #003B8E;
+    color: #003B8E;
+    background-color: white;
+    color: #003B8E;
+}
