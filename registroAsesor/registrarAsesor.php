@@ -25,7 +25,7 @@
         {
             echo '<h2> El usuario se ha registrado correctamente!</h2>';
             echo '<h3> Se rediccionará a la página de inicio en unos segundos</h3>';
-            header( "refresh:5;url=regAsesor.php" );    
+            header( "refresh:5;url=../index.php" );    
             //Se reciben las sesiones y se insertan en la base de datos
             require_once("../conexion.php");
             session_start();
@@ -38,9 +38,13 @@
             $grupo = $_SESSION['grupo'];
             $grado = $_SESSION['grado'];
             $horario = $_SESSION['horario'];
-            #session_destroy();
-            $insertar = "INSERT INTO asesores (nombre,celular,correo,carrera,grado,grupo,horario,diasDisponibles)
-                            VALUES ('$nombre','$telefono','$correo','$carrera',$grado,$grupo,'$horario','$diasDisponibles')";
+            $pass = $_SESSION['pass'];
+            /******************************************************/
+            session_destroy();
+            /******************************************************/
+            $insertar = "INSERT INTO asesores (nombre,celular,correo,carrera,grado,grupo,horario,diasDisponibles,password)
+                            VALUES ('$nombre','$telefono','$correo','$carrera',$grado,$grupo,'$horario','$diasDisponibles','$pass')";
+
             $con = conectar();
             $query = mysqli_query($con,$insertar);
             $queryAlumno = "SELECT idAsesor from asesores where celular = '$telefono' LIMIT 1";

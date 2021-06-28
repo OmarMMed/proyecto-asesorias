@@ -1,6 +1,6 @@
 <?php
     //Se requiere para mandar a llamar a la base de datos
-    require("../conexion.php");
+    require_once("../conexion.php");
     $con = conectar();
     $error = "";
     //Si algunos de los campos están vacíos o si todos los campos del horario está vacío, manda el error a la página
@@ -9,7 +9,7 @@
     {
         if(empty($_POST['nombre']) || empty($_POST['telefono']) || empty($_POST['correo'])
             || empty($_POST['carrera']) || empty($_POST['grupo']) || empty($_POST['grado'])
-            || empty($_POST['horario']) ||
+            || empty($_POST['horario']) || empty($_POST['pass']) || empty($_POST['confirmar']) ||
             (empty($_POST['lunes']) && empty($_POST['martes']) && empty($_POST['miercoles'])
             && empty($_POST['jueves']) && empty($_POST['viernes'])))
         {
@@ -28,6 +28,9 @@
             $_SESSION['grupo'] = $_POST['grupo'];
             $_SESSION['grado'] = $_POST['grado'];
             $_SESSION['horario'] = $_POST['horario'];
+            /******************************************************/
+            $_SESSION['pass'] = $_POST['pass'];
+            /******************************************************/
 
             //Valida que los elementos dados sean válidos
             if(!is_string($_SESSION['nombre']) || !preg_match("/[a-zA-Z ñáéíóú]*/",$_SESSION['nombre']))
@@ -44,6 +47,19 @@
                 if($error != "") $error .= '<br>';
                 $error .= "El número de teléfono es inválido";
             }
+            /******************************************************/
+            if($_SESSION['pass'] != $_POST['confirmar'])
+            {
+                if($error != "") $error .= '<br>';
+                $error .= "Las contraseñas no concuerdan";
+            }
+            $pattern = "((?=.*[A-Z])(?=.*[a-z])(?=.*\d).{7,21})";
+            if(!preg_match($pattern,$_SESSION['pass']))
+            {
+                if($error != "") $error .= '<br>';
+                $error .= "Las contraseñas no concuerda con el patrón establecido: 1 mayúscula, 1 minúscula y 1 dígito";
+            }
+            /******************************************************/
             if($error != "") header("Location:regAsesor.php?error=$error");
 
             //Concatena una cadena con todos los días que un alumno da clase
@@ -215,7 +231,6 @@
                         ?>
                     </select>
                 </p>
-                <label><b>Si desea seleccionar mas de una materia presione ctrl + click izquierdo sobre el nombre de la materia</b></label>
                 <input type="submit" value="Elegir materias">
             </form>
         </div>

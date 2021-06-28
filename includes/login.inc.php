@@ -12,17 +12,10 @@ if(isset($_POST['login-submit'])){
     }
     else{
         $sql = "SELECT * FROM estudiante WHERE numCuenta='$mailuid'";
-        $stmt = mysqli_stmt_init($conn);
-        if(!mysqli_stmt_prepare($stmt, $sql)){
-            $sql = "SELECT * FROM asesores WHERE idAsesor='$mailuid'";
-            $stmt = mysqli_stmt_init($conn);
-            if(!mysqli_stmt_prepare($stmt, $sql)){
-                header("Location: ../index.php?error=sqlerror");
-                exit();  
-            }else{
-                mysqli_stmt_bind_param($stmt, "ss", $mailuid);
-            mysqli_stmt_execute($stmt);
-            $result= mysqli_stmt_get_result($stmt);
+        $total = mysqli_num_rows(mysqli_query($conn,$sql));
+        if($total == 0){
+            $sql = "SELECT * FROM asesores WHERE idAsesor ='$mailuid'";
+            $result = mysqli_query($conn, $sql);
             if($row = mysqli_fetch_assoc($result)){
                 if($password != $row['password']){
                     
@@ -47,12 +40,8 @@ if(isset($_POST['login-submit'])){
                 header("Location: ../index.php?error=nouser");
                 exit();
             }
-            }
-        }
-        else{
-            mysqli_stmt_bind_param($stmt, "ss", $mailuid);
-            mysqli_stmt_execute($stmt);
-            $result= mysqli_stmt_get_result($stmt);
+        }else{
+            $result = mysqli_query($conn, $sql);
             if($row = mysqli_fetch_assoc($result)){
                 if($password != $row['password']){
                     

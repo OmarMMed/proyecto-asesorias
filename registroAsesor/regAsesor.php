@@ -32,6 +32,14 @@
                             <option value="Informática">Facultad de Informática Culiacán</option>
                             <option value="ITSE">Ingeniería en Telecomunicaciones y Sistemas y Electronica</option>
                         </select> </p>
+                        <?php /********************************************************************************/?>
+                        <label for="pass">Ingrese su contraseña:</label><br>
+                        <input type="password" name="pass" maxlength="20" required> <label>Recuerda que tu contraseña tiene que tener como minimo 1 mayúscula, 1 minúscula y 1 dígito</label>
+                        </p>
+                        <label for="confirmar">Confirme su contraseña:</label><br>
+                        <input type="password" name="confirmar" maxlength="20" required>
+                        </p>
+                        <?php /******************************************************************************/?>
                         <label>Grado y Grupo</label>
                         <select name="grado" required>
                             <option selected disabled hidden value="">Elija el grado al que pertenece</option>
@@ -48,7 +56,6 @@
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
-                            <option value="5">5</option>
                         </select>
                         </p>
                         <label>Dias Disponibles de la Semana: </label>
