@@ -2,10 +2,10 @@
 include("../header.php");
 require ("../conexion.php"); 
 if(isset($_SESSION['asesor'])){
-  header("Location: ../asesores.php");
+  header("Location: ../asesores/asesores.php");
 }
 elseif(isset($_SESSION['estudiante'])){
-  header("Location: ../estudiantes.php");
+  header("Location: ../estudiante/estudiantes.php");
 }
 if(isset($_SESSION['rt'])){
 echo '<!DOCTYPE html>

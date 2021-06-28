@@ -33,8 +33,8 @@ else{ echo '
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
-                        <a href="estudiante/registro_estudiantes.php" class="signup-image-link">Crear una cuenta como estudiante</a> <br>
-                        <a href="registroAsesor/regAsesor.php.php" class="signup-image-link">Crear una cuenta como asesor par</a>
+                        <a href="estudiante/register.php" class="signup-image-link">Crear una cuenta como estudiante</a> <br>
+                        <a href="asesor/regAsesor.php" class="signup-image-link">Crear una cuenta como asesor par</a>
                     </div>
 
                     <div class="signin-form">

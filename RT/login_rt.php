@@ -32,7 +32,7 @@ if(isset($_POST['login-submit'])){
                     $_SESSION['rt'] = $mailuid;
 
                     
-                    header("Location: ../rt.php?login=success");
+                    header("Location: rt.php?login=success");
                     exit();
                 }
                 else{

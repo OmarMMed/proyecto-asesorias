@@ -19,7 +19,7 @@
                     || empty($_POST['pass']) || empty($_POST['confirmar']))
                 {
                     $error = "Faltan campos para rellenar";
-                    header("Location:regTutor.php?error=$error");
+                    header("Location:register.php?error=$error");
                 }
                 else
                 {
@@ -38,7 +38,7 @@
                             if($existeUsuario[0] > 1)
                             { 
                                 $error = "Ya existe ese número de cuenta";
-                                header("Location:regTutor.php?error=$error");
+                                header("Location:register.php?error=$error");
                             }
                         }
                     }
@@ -72,7 +72,7 @@
                         if($error != "") $error .= '<br>';
                         $error .= "Las contraseñas no concuerda con el patrón establecido: 1 mayúscula, 1 minúscula y 1 dígito";
                     }
-                    if($error != "") header("Location:regTutor.php?error=$error");
+                    if($error != "") header("Location:register.php?error=$error");
                     else
                     {
                         $queryInsertar = "INSERT INTO responsabletutorias(numeroCuenta,password,nombre,correo,celular)
@@ -81,7 +81,7 @@
                         {
                             echo '<h2> El usuario se ha registrado correctamente!</h2>';
                             echo '<h3> Se rediccionará a la página de inicio en unos segundos</h3>';
-                            header( "refresh:5;url=regTutor.php" );    
+                            header( "refresh:5;url=index_rt.php" );    
                         }
                     }
                 }

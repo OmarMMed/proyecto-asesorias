@@ -1,13 +1,12 @@
 <?php 
-require("conexion.php");
-
+require("../conexion.php");
 
 // Crear la conexion al servidor de base de datos
 $conn=new mysqli($servidor, $usuario, $pwd, $bd);
 if ($conn -> connect_error) 
 {
   die("Error al momento de conectar al servidor: " . $conn->connect_error);
-}
+}else{
 
  $numCuenta=$_POST['numCuenta'] ;
  $nombreCompleto=$_POST['nombreCompleto'] ;
@@ -21,15 +20,10 @@ if ($conn -> connect_error)
  $correo=$_POST['correo'] ; 
 
 $insertar= "INSERT INTO estudiante (numCuenta,nombreCompleto,password,carrera,grado,turno,grupo,promedio,celular,correo) VALUES ('$numCuenta','$nombreCompleto','$pwd','$carrera','$grado','$turno','$grupo','$promedio','$celular','$correo')";
-$Resultado= $conn->query($insertar);
+$result = mysqli_query($conn, $insertar);
 //$sql="SELECT * from clientes";
-//$result=$conn->query($sql);
-if ($conn -> connect_error) 
-{
-	die("Error al momento de conectar al servidor: " . $conn->connect_error);
-}
-else{
-  echo "Se guardo correctamente";
+//$result=$conn->query($sql)
+header("Location: estudiantes.php")
 }
 
 $conn ->close();

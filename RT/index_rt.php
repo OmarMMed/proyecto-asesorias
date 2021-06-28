@@ -167,7 +167,7 @@ background-color: #2384d5;
 
       <div class="container">
     <div class="column-left">Crea una nueva cuenta</div>
-    <div class="column-right"><a href="../registroTutor/regTutor.php">Registrarme como RT</a></div><br><br><br>
+    <div class="column-right"><a href="register.php">Registrarme como RT</a></div><br><br><br>
 </form>
   </div>
 </div>
