@@ -3,7 +3,6 @@ include("header.php");
 require 'conexion.php';
 if(isset($_SESSION['asesor'])){
   header("Location: asesores.php");
-
 }
 elseif(isset($_SESSION['estudiante'])){
   header("Location: estudiantes.php");
