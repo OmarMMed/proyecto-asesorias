@@ -176,3 +176,5 @@ background-color: #2384d5;
 </body>
 </html> '
 ;} ?>
+
+include("../header.php");

@@ -11,169 +11,74 @@ elseif(isset($_SESSION['rt'])){
   header("Location: rt.php");
 }
 else{ echo '
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>LOGIN</title>
-	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Asesorias Par - FIC</title>
 
-  }
-<style>
-body {
-   font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
-	
-}
-form {
-   max-width: 550px;
-   margin: auto;
-}
-.inputContainer i {
-    position: absolute;
-    left: 30;
-}
-.inputContainer {
-   width: 100%;
-   margin-bottom: 10px;
-	text-align: left
-}
-.icon {
-   padding: 12px;
-   color: black;
-   width: 70px;
-   text-align: left;
-}
-.Field {
-   width: 100%;
-   padding: 10px;
-   text-align: center;
-   font-size: 20px;
-   font-weight: 500;
-}
-	input {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  border: 1px solid #ccc;
-  border-radius: .1875rem;
-  box-sizing: border-box;
-  display: block;
-  font-size: .875rem;
-  margin-bottom: 1rem;
-  padding: .275rem;
-  width: 100%;
-		background-color: 
-}
-	input[type="checkbox"] {
-  -webkit-appearance: checkbox;
-     -moz-appearance: checkbox;
-          appearance: checkbox;
-  display: inline-block;
-  width: auto;
-	  color: #fff;
-}
-	input[type="submit"] {
-  background-color: #a51316;
-  border: 10px;
-		border-color: #000000;
-  color: #fff;
-  font-size: 1rem;
-  padding: .5rem 1rem;
-		width: 60%;
-text-align: center;
-	
-			
-}
-	a {
-    color: #fff;
-    text-align: center;
-		
-			
-}
-	.column-left{ float: left; width: 33.333%; }
-.column-right{ float: right; width: 33.333%; }
-.column-center{ display: inline-block; width: 33.333%; }
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
-	.split {
-  height: 100%;
-  width: 50%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-/* Control the left side */
-.left {
-  left: 0;
-  background-color: #FFFFFF;
-
-}
-
-/* Control the right side */
-.right {
-  right: 0;
-background-color: #2384d5;
-}
-
-/* If you want the content centered horizontally and vertically */
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-/* Style the image inside the centered container, if needed */
-.centered img {
-  width: 150px;
-  border-radius: 50%;
-}
-</style>
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
 
 
+        <!-- Sing in  Form -->
+        <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
+                        <a href="estudiante/register.php" class="signup-image-link">Crear una cuenta como estudiante</a> <br>
+                        <a href="asesor/regAsesor.php" class="signup-image-link">Crear una cuenta como asesor par</a>
+                    </div>
 
-	<div class="split left">
-  	
-     <img src="Lo.jpg">
-  </div>
-</div>
+                    <div class="signin-form">
+                        <h2 class="form-title">Login</h2>
+                        <form method="POST" class="register-form" action="includes/login.inc.php" method="post">
+                            <div class="form-group">
+                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input class="Field" type="text" placeholder="Numero de cuenta" name="num"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input class="Field" type="password" placeholder="Contraseña" name="contrasena"/>
+                            </div>
+                            
+                            <div class="form-group form-button">
+                                <input type="submit"  name="login-submit" id="submit" class="form-submit" value="Log in"/>
+                            </div>
+                        </form>
+                        <div class="social-login">
+                            <span class="social-label">Or login with</span>
+                            <ul class="socials">
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <footer>
+                    <div class="footer-area">
+                        <p>Departamento de Tutorias de la Facultad de Informática Culiacán <a href="https://fic.uas.edu.mx/"> Pagina web</a>.</p>
+                    </div>
+                </footer>
+            </div>
 
+            
+        </section>
 
-<div class="split right">
-	
-  <div class="centered">
+        
 
+    </div>
 
-
-<h1 style="text-align: center; color: white">INICIA SESIÓN</h1><br>
-<form action="includes/login.inc.php" method="post">
-  <div class="inputContainer">
-  <i class="fa material-icons icon">person_outline</i>
-  <input class="Field" type="text" placeholder="Numero de cuenta" name="num"/>
-  </div>
-  <div class="inputContainer">
-  <i class="fa material-icons icon">lock_open</i>
-  <input class="Field" type="password" placeholder="Contraseña" name="contrasena"/>
-  </div>
-    <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Recordarme</label>    <a href="url"><br>Olvidé mi contraseña </a><br><br>
-    <input type="submit" name="login-submit" value="Iniciar Sesión" onclick="lsRememberMe()">
-
-
-      <div class="container">
-    <div class="column-left"><a href="registro_estudiantes.php">Registrarme como estudiante</a></div>
-    <div class="column-center">Crea una cuenta</div>
-    <div class="column-right"><a href="registroAsesor/regAsesor.php">Registrarme como asesor</a></div><br><br><br>
-</form>
-  </div>
-</div>
-</div>
-
-</body>
-</html> '
-;} ?>
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>'; } ?>

@@ -1,6 +1,6 @@
 <?php 
-	include("header.php");
-	require 'conexion.php';
+	include("../header.php");
+	require '../conexion.php';
   	$conn=new mysqli($servidor, $usuario, $pwd, $bd);
 ?>
 <!DOCTYPE html>

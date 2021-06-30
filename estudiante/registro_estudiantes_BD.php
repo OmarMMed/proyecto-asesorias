@@ -23,7 +23,7 @@ $insertar= "INSERT INTO estudiante (numCuenta,nombreCompleto,password,carrera,gr
 $result = mysqli_query($conn, $insertar);
 //$sql="SELECT * from clientes";
 //$result=$conn->query($sql)
-header("Location: estudiantes.php")
+header("Location: estudiantes.php");
 }
 
 $conn ->close();
