@@ -23,9 +23,8 @@
         }
         else
         {
-            echo '<h2> El usuario se ha registrado correctamente!</h2>';
-            echo '<h3> Se rediccionará a la página de inicio en unos segundos</h3>';
-            header( "refresh:5;url=../index.php" );    
+            echo '<h1> El usuario se ha registrado correctamente!</h1>';
+             
             //Se reciben las sesiones y se insertan en la base de datos
             require_once("../conexion.php");
             session_start();
@@ -55,6 +54,9 @@
                     $id = $filaAlumno['idAsesor'];
                 }
             }
+            echo '<h2>Este es tu id de Asesor: <b>'.$id.'</b> es muy importante que lo anotes ya que con el inicias sesión</h2><br>';
+            echo '<h2>Cuando estes listo presiona <a href="../index.php">continuar</a></h2>';
+            //header( "refresh:5;url=../index.php" );   
             if(!empty($_POST['primero']))
             {
                 foreach($_POST['primero'] as $selected)

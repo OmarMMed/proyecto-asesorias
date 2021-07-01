@@ -102,6 +102,9 @@ $con = conectar();
                 <form action="borrar_asesor.php" method="POST">
                     <input type="submit" value="Eliminar Asesor" name="registro">
                 </form>
+                <form action="asesores.php">
+                    <input type="submit" value="Regresar" name="registro">
+                </form>
         </div>
     </body>
 </html>

@@ -121,10 +121,10 @@ if(isset($_SESSION['estudiante'])){
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Asesores</h4>
+                            <h4 class="page-title pull-left">Asesor</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="asesores.php">Inicio</a></li>
-                                <li><span>Ver solicutudes</span></li>
+                                <li><span>Ver solicitudes</span></li>
                             </ul>
                         </div>
                     </div>
@@ -145,7 +145,7 @@ if(isset($_SESSION['estudiante'])){
             <!-- page title area end -->
             <div>
             
-     <h1 style="text-align:center">Estudiante</h1>
+     <h1 style="text-align:center">Asesor</h1>
      
             <body>
 

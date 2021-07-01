@@ -231,6 +231,7 @@
                         ?>
                     </select>
                 </p>
+                <h2>Para seleccionar más de una materia presiona ctrl + click izquiero en el nombre de la materia</h2>
                 <input type="submit" value="Elegir materias">
             </form>
         </div>

@@ -163,6 +163,9 @@ $con = conectar();
                 </p>
                 <input type="submit" value="Elegir materias">
             </form>
+            <form action="perfil_asesor.php">
+                    <input type="submit" value="Regresar" name="registro">
+            </form>
 </div>
 
 </body>

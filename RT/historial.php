@@ -41,7 +41,9 @@ echo '<!DOCTYPE html>
    </div>
 </div>
 
-
+<form action="rt.php">
+<input type="submit" value="Regresar" name="registro">
+</form>
 
 
 <table class="table table-striped table-bordered" id="myTable">
@@ -90,6 +92,9 @@ echo '<!DOCTYPE html>
 
 echo '
 </table>
+
+
+
 
 <script>
 function myFunction() {

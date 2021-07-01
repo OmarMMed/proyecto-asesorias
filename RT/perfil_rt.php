@@ -74,6 +74,9 @@ $con = conectar();
                         <form action="borrar_rt.php" method="POST" onsubmit="if(!confirm('Seguro que desea borrar?')){return false;}">
                             <input type="submit" value="borrar perfil" name="borrar">
                         </form>
+                        <form action="rt.php">
+                            <input type="submit" value="Regresar" name="registro">
+                        </form>
                     </div>
                     <div class="signup-image">
                         <figure><img src="../images/signup-image.jpg" alt="sing up image"></figure>

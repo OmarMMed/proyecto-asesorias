@@ -44,5 +44,8 @@
 	} 
 	?>
 	</table>
+	<form action="rt.php">
+         <input type="submit" value="Regresar" name="registro">
+    </form>
 </body>
 </html>
