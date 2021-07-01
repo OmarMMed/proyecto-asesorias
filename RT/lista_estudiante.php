@@ -95,6 +95,7 @@ elseif(isset($_SESSION['estudiante'])){
                                 <a href="lista_estudiante.php" aria-expanded="true"><i class="fa fa-table"></i>
                                     <span>Lista de Estudiantes inscritos a Tutorias</span></a>                               
                             </li>
+                           
                         </ul>
                     </nav>
                 </div>
@@ -168,26 +169,29 @@ elseif(isset($_SESSION['estudiante'])){
                     <div class="col-lg-10 mt-10">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="header-title">Historial de Asesorias</h4>
+                                <h4 class="header-title">Lista de estudiantes</h4>
                                 <div class="single-table">
                                     <div class="table-responsive">
                                     <div class="row col-12">
 	<div  class="col-10"></div>
 	<div class="search-box pull-left">
-	<input type="text" id="myInput2" onkeyup="myFunction()" placeholder="Buscar asesor.." title="Escribe un nombre">
+	<input type="text" id="myInput2" onkeyup="myFunction()" placeholder="Buscar estudiante.." title="Escribe un nombre">
    </div>
 </div>
 
 
 <table class="table table-striped table-bordered" id="myTable">
 <tr>
-      <th>Clave</th>
-      <th  onclick="sortTable(1)" style="cursor: pointer">Materia</th>
-      <th onclick="sortTable(2)" style="cursor: pointer">Fecha y hora</th>
-      <th onclick="sortTable(3)" style="cursor: pointer";>Nombre Estudiante</th>
-      <th onclick="sortTable(4)" style="cursor: pointer">Nombre Asesor</th>
-      <th onclick="sortTable(5)" style="cursor: pointer">Grupo</th>
-      <th onclick="sortTable(6)" style="cursor: pointer">Carrera</th>
+      <th>Numero de Cuenta</th>
+      <th  onclick="sortTable(1)" style="cursor: pointer">Nombre</th>
+      <th onclick="sortTable(2)" style="cursor: pointer">Password</th>
+      <th onclick="sortTable(3)" style="cursor: pointer";>Carrera</th>
+      <th onclick="sortTable(4)" style="cursor: pointer">Grado</th>
+      <th onclick="sortTable(5)" style="cursor: pointer">Turno</th>
+      <th onclick="sortTable(6)" style="cursor: pointer">Grupo</th>
+      <th onclick="sortTable(7)" style="cursor: pointer">Promedio</th>
+      <th onclick="sortTable(8)" style="cursor: pointer">Celular</th>
+      <th onclick="sortTable(9)" style="cursor: pointer">Correo</th>
     </tr>
     <?php
     
@@ -201,20 +205,23 @@ elseif(isset($_SESSION['estudiante'])){
     }
 
    //obtener los registros de la base de datos 
-    $sql = "SELECT *  from agenda";
+    $sql = "SELECT *  from estudiante";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0){
     	while ($row = $result->fetch_object()) {
     		
          echo "<tr>";
-            echo "<td>" . $row->idAsesoria . "</td>";
-            echo "<td>" . $row->nombreMateria . "</td>";
-            echo "<td>" . $row->Fecha . "</td>";
-            echo "<td>" . $row->nombreEstudiante . "</td>";
-            echo "<td>" . $row->nombreAsesor . "</td>";
-            echo "<td>" . $row->grupoEstudiante . "</td>";
+            echo "<td>" . $row->numCuenta . "</td>";
+            echo "<td>" . $row->nombreCompleto . "</td>";
+            echo "<td>" . $row->password . "</td>";
             echo "<td>" . $row->carrera . "</td>";
+            echo "<td>" . $row->grado . "</td>";
+            echo "<td>" . $row->turno . "</td>";
+            echo "<td>" . $row->grupo . "</td>";
+            echo "<td>" . $row->promedio . "</td>";
+            echo "<td>" . $row->celular . "</td>";
+            echo "<td>" . $row->correo . "</td>";
          echo "</tr>";
 
     	}
@@ -239,7 +246,7 @@ function myFunction() {
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[4];
+    td = tr[i].getElementsByTagName("td")[1];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {

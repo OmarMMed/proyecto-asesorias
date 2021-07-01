@@ -91,6 +91,11 @@ elseif(isset($_SESSION['estudiante'])){
                                 <a href="historial.php" aria-expanded="true"><i class="fa fa-table"></i>
                                     <span>Ver Historias de asesorias</span></a>                               
                             </li>
+
+                            <li class="active">
+                                <a href="lista_estudiante.php" aria-expanded="true"><i class="fa fa-table"></i>
+                                    <span>Lista de Estudiantes inscritos a Tutorias</span></a>                               
+                            </li>
                            
                         </ul>
                     </nav>
