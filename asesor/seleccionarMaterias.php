@@ -97,7 +97,7 @@
     </head>
     <body>
     <div class="contenedor">
-            <form method="post" action="registrarAsesor.php">
+    <form method="post" action="registrarAsesor.php">
                 <h2>Materias a las que desea dar clase:</h2></p>
                 <?php
                     if (isset($_GET['error']))
@@ -186,7 +186,7 @@
                         <?php
                             $select4 = "SELECT * FROM materias WHERE 
                             semestre >= 7 AND semestre <= 8";
-                            $result4 = mysqli_query($con,$select2);
+                            $result4 = mysqli_query($con,$select4);
                             
                             if($_SESSION['carrera'] != "ITSE")
                             {
@@ -219,7 +219,7 @@
                             {
                                 $select5 .= " AND categorias = 'ITSE'";
                             }
-                            $result5 = mysqli_query($con,$select2);
+                            $result5 = mysqli_query($con,$select5);
 
                             if($result5)
                             {

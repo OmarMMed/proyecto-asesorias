@@ -67,9 +67,15 @@
                             </div>
                             
                             <div class="mb-3">
-                                <input name="pwd" type="text" class="form-control" 
+                                <input required name="pwd" type="password" class="form-control" 
                                 id="pwd" placeholder="Ingrese una contraseña" value="">
                             </div>
+
+                            <div class="mb-3">
+                                <input required name="confirmar" type="password" class="form-control" 
+                                id="confirmar" placeholder="Confirme su contraseña" value="">
+                            </div>
+
 
                             <div class="mb-3">
                                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="carrera">
@@ -128,7 +134,7 @@
                     </div>
                     <div class="signup-image">
                         <figure><img src="../images/signup-image.jpg" alt="sing up image"></figure>
-                        <a href="../login.php" class="signup-image-link">I am already member</a>
+                        <a href="../index.php" class="signup-image-link">Ya tengo una cuenta</a>
                     </div>
                 </div>
             </div>
