@@ -81,13 +81,13 @@ if(isset($_SESSION['asesor'])){
                            
                             
                             <li class="active">
-                                <a href="estudiantes.php" aria-expanded="true"><i class="fa fa-table"></i>
-                                    <span>Estudiantes</span></a>                               
+                                <a href="solicitud.php" aria-expanded="true"><i class="fa fa-table"></i>
+                                    <span>Solicitar una asesoria</span></a>                               
                             </li>
                             
                             <li class="active">
-                                <a href="estudiantes.php" aria-expanded="true"><i class="fa fa-table"></i>
-                                    <span>Solicitar Asesoria</span></a>                               
+                                <a href="revisarSolicitud.php" aria-expanded="true"><i class="fa fa-table"></i>
+                                    <span>Mis asesorias</span></a>                               
                             </li>
                             
 
@@ -131,7 +131,8 @@ if(isset($_SESSION['asesor'])){
                             <h4 class="page-title pull-left">Estudiante</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="estudiantes.php">Inicio</a></li>
-                                <li><span>Solicitar asesorías</span></li>
+                                <li><a href="solicitud.php">Solicitar una asesoria</a></li>
+                                <li><a href="revisarSolicitud.php">Mis asesorias</a></li>
                             </ul>
                         </div>
                     </div>

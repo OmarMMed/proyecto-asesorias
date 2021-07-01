@@ -47,7 +47,9 @@ CREATE TABLE Agenda(
     nombreAsesor VARCHAR(40),
     grupoEstudiante Varchar(3),
     carrera VARCHAR (30),
-    PRIMARY KEY(idAsesoria)
+    id_sol INT,
+    PRIMARY KEY(idAsesoria),
+    FOREIGN KEY (id_sol) REFERENCES solicitud(id_solicitud)
 );
 
 CREATE TABLE Materias(
@@ -74,3 +76,13 @@ CREATE TABLE AsesoresDisp(
     disponibilidad char(1),
     FOREIGN KEY(idAsesor) REFERENCES Asesores(idAsesor)
 );
+CREATE TABLE solicitud (
+    id_solicitud INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_asesor INT,
+    id_materia INT,
+    id_estudiante VARCHAR(8),
+    estado VARCHAR(45) NOT NULL, 
+    FOREIGN KEY (id_asesor) REFERENCES asesores(idAsesor),
+    FOREIGN KEY (id_materia) REFERENCES materias(idMateria),
+    FOREIGN KEY (id_estudiante) REFERENCES estudiante(numCuenta)
+ );

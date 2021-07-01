@@ -78,11 +78,9 @@ if(isset($_SESSION['estudiante'])){
                                 
                             </li>
                             
-                           
-                            
                             <li class="active">
-                                <a href="asesores.php" aria-expanded="true"><i class="fa fa-table"></i>
-                                    <span>Asesores</span></a>                               
+                                <a href="revisarSolicitud.php" aria-expanded="true"><i class="fa fa-table"></i>
+                                    <span>Ver lista de solicitudes</span></a>                               
                             </li>
                            
                         </ul>
@@ -124,7 +122,7 @@ if(isset($_SESSION['estudiante'])){
                             <h4 class="page-title pull-left">Asesor</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="asesores.php">Inicio</a></li>
-                                <li><span>Ver solicitudes</span></li>
+                                <li><a href="revisarSolicitud.php">Ver solicitudes</a></li>
                             </ul>
                         </div>
                     </div>
