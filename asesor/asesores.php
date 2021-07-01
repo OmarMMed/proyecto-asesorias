@@ -123,7 +123,7 @@ if(isset($_SESSION['estudiante'])){
                         <div class="breadcrumbs-area clearfix">
                             <h4 class="page-title pull-left">Asesores</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="estudiantes.php">Inicio</a></li>
+                                <li><a href="asesores.php">Inicio</a></li>
                                 <li><span>Ver solicutudes</span></li>
                             </ul>
                         </div>
@@ -178,7 +178,7 @@ if(isset($_SESSION['estudiante'])){
                                             <tbody>
             <?php 
             
-               $sql = "SELECT * FROM agenda WHERE nombreAsesor  = '$nombre'";
+               $sql = "SELECT * FROM agenda WHERE  	nombreAsesor  = '$nombre'";
                $resultado = mysqli_query($con,$sql);
                if (!empty($resultado) ) {
 				  
@@ -195,8 +195,6 @@ if(isset($_SESSION['estudiante'])){
                       <th><?php echo $row["nombreAsesor"]  ?></th>
                       <th><?php echo $row["grupoEstudiante"]  ?></th>
                       <th><?php echo $row["carrera"]  ?></th>
-					  <th> <a href="up"Edit></a><a href="edit.php?id=<?php echo $row["product_id"] ?>">Edit</a> 
-                      <a href="up"Edit></a><a href="delete.php?id=<?php echo $row["product_id"] ?>">Delete</a></th>
                     
                       
                     </tr>

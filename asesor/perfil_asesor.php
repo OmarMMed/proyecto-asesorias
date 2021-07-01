@@ -10,7 +10,7 @@ if(isset($_SESSION['estudiante'])){
   }
   //confirmar inicio de sesión del RT
   if(!isset($_SESSION['asesor'])){
-    header("Location: ../login.php");
+    header("Location: ../index.php");
 }
 
 

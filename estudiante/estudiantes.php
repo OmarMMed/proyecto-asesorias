@@ -200,8 +200,6 @@ if(isset($_SESSION['asesor'])){
                       <th><?php echo $row["nombreAsesor"]  ?></th>
                       <th><?php echo $row["grupoEstudiante"]  ?></th>
                       <th><?php echo $row["carrera"]  ?></th>
-					  <th> <a href="up"Edit></a><a href="edit.php?id=<?php echo $row["product_id"] ?>">Edit</a> 
-                      <a href="up"Edit></a><a href="delete.php?id=<?php echo $row["product_id"] ?>">Delete</a></th>
                     
                       
                     </tr>
