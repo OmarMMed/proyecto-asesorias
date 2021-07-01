@@ -1,25 +1,25 @@
 <?php 
 include("../header.php");
 require '../conexion.php';
-if(isset($_SESSION['asesor'])){
-    header("Location: ../asesor/asesores.php");
+if(isset($_SESSION['estudiante'])){
+    header("Location: ../estudiante/estudiantes.php");
   }
   elseif(isset($_SESSION['rt'])){
-    header("Location: ../rt/rt.php");
+    header("Location: ../RT/login_rt.php");
   }
-  elseif(!isset($_SESSION['estudiante'])){
+  //confirmar inicio de sesión del RT
+  if(!isset($_SESSION['asesor'])){
     header("Location: ../index.php");
-  }
-  else{
-      $num = $_SESSION['estudiante'];
+}
+      $num = $_SESSION['asesor'];
 
       $con = conectar();
 
-    $query = "SELECT * FROM estudiante WHERE numCuenta = '$num'";
+    $query = "SELECT * FROM asesores WHERE idAsesor = '$num'";
     $result = $con->query($query);
     $row = $result->fetch_object();
-    $nombre = $row->nombreCompleto;
-  }
+    $nombre = $row->nombre;
+  
 ?>
 
 
@@ -66,7 +66,7 @@ if(isset($_SESSION['asesor'])){
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="https://fic.uas.edu.mx/departamento-de-tutorias/"><img src="../assets/images/icon/logo3.png" alt="logo"></a>
+                    <a href="https://fic.uas.edu.mx/departamento-de-tutorias/"><img src="../assets/images/icon/asesorpar.png" alt="logo"></a>
                 </div>
             </div>
             <div class="main-menu">
@@ -74,20 +74,15 @@ if(isset($_SESSION['asesor'])){
                     <nav>
                         <ul class="metismenu" id="menu">
                             <li>
-                                <a href="estudiantes.php" aria-expanded="true"><i class="ti-dashboard"></i><span>Inicio</span></a>
+                                <a href="asesores.php" aria-expanded="true"><i class="ti-dashboard"></i><span>Inicio</span></a>
                                 
                             </li>
                             
                            
                             
                             <li class="active">
-                                <a href="estudiantes.php" aria-expanded="true"><i class="fa fa-table"></i>
-                                    <span>Estudiantes</span></a>                               
-                            </li>
-                            
-                            <li class="active">
-                                <a href="estudiantes.php" aria-expanded="true"><i class="fa fa-table"></i>
-                                    <span>Solicitar Asesoria</span></a>                               
+                                <a href="asesores.php" aria-expanded="true"><i class="fa fa-table"></i>
+                                    <span>Asesores</span></a>                               
                             </li>
                            
                         </ul>
@@ -126,20 +121,20 @@ if(isset($_SESSION['asesor'])){
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Estudiante</h4>
+                            <h4 class="page-title pull-left">Asesores</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="estudiantes.php">Inicio</a></li>
-                                <li><span>Solicitar asesorías</span></li>
+                                <li><span>Ver solicutudes</span></li>
                             </ul>
                         </div>
                     </div>
                     <!--Perfil -->
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
-                        <a href="perfil_estudiante.php"><img class="avatar user-thumb" src="../assets/images/author/avatar.png" alt="avatar" url=></a>
+                        <a href="perfil_asesor.php"><img class="avatar user-thumb" src="../assets/images/author/avatar.png" alt="avatar" url=></a>
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $nombre; ?> <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="perfil_estudiante.php">Ver perfil</a>
+                                <a class="dropdown-item" href="perfil_asesor.php">Ver perfil</a>
                                <a class="dropdown-item" href="../exit.php">Cerrar Sesión</a>
 
                             </div>
@@ -183,7 +178,7 @@ if(isset($_SESSION['asesor'])){
                                             <tbody>
             <?php 
             
-               $sql = "SELECT * FROM agenda WHERE nombreEstudiante = '$nombre'";
+               $sql = "SELECT * FROM agenda WHERE nombreAsesor  = '$nombre'";
                $resultado = mysqli_query($con,$sql);
                if (!empty($resultado) ) {
 				  

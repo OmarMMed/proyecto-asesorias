@@ -28,7 +28,7 @@ if(isset($_POST['login-submit'])){
                     $_SESSION['asesor'] = $mailuid;
 
                     
-                    header("Location: ../asesores.php?login=success");
+                    header("Location: ../asesor/asesores.php?login=success");
                     exit();
                 }
                 else{
@@ -54,7 +54,7 @@ if(isset($_POST['login-submit'])){
                     $_SESSION['estudiante'] = $mailuid;
 
                     
-                    header("Location: ../estudiante.php?login=success");
+                    header("Location: ../estudiante/estudiantes.php?login=success");
                     exit();
                 }
                 else{

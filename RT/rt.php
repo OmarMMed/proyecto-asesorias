@@ -1,25 +1,15 @@
 <?php 
-include("../header.php");
-require '../conexion.php';
-if(isset($_SESSION['asesor'])){
-    header("Location: ../asesor/asesores.php");
-  }
-  elseif(isset($_SESSION['rt'])){
-    header("Location: ../rt/rt.php");
-  }
-  elseif(!isset($_SESSION['estudiante'])){
-    header("Location: ../index.php");
-  }
-  else{
-      $num = $_SESSION['estudiante'];
-
-      $con = conectar();
-
-    $query = "SELECT * FROM estudiante WHERE numCuenta = '$num'";
-    $result = $con->query($query);
-    $row = $result->fetch_object();
-    $nombre = $row->nombreCompleto;
-  }
+ // session_start(); 
+//
+ // if (!isset($_SESSION['username'])) {
+ // 	$_SESSION['msg'] = "You must log in first";
+ // 	header('location: login.php');
+//  }
+ // if (isset($_GET['logout'])) {
+ // 	session_destroy();
+ // 	unset($_SESSION['username']);
+  //	header("location: login.php");
+  //}
 ?>
 
 
@@ -33,21 +23,21 @@ if(isset($_SESSION['asesor'])){
     <title>Asesorias</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../assets/css/themify-icons.css">
-    <link rel="stylesheet" href="../assets/css/metisMenu.css">
-    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../assets/css/slicknav.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/metisMenu.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/slicknav.min.css">
     <!-- amchart css -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
     <!-- others css -->
-    <link rel="stylesheet" href="../assets/css/typography.css">
-    <link rel="stylesheet" href="../assets/css/default-css.css">
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/typography.css">
+    <link rel="stylesheet" href="assets/css/default-css.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
     <!-- modernizr css -->
-    <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>
@@ -66,7 +56,7 @@ if(isset($_SESSION['asesor'])){
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="https://fic.uas.edu.mx/departamento-de-tutorias/"><img src="../assets/images/icon/logo3.png" alt="logo"></a>
+                    <a href="index.php"><img src="assets/images/icon/logo.png" alt="logo"></a>
                 </div>
             </div>
             <div class="main-menu">
@@ -74,21 +64,19 @@ if(isset($_SESSION['asesor'])){
                     <nav>
                         <ul class="metismenu" id="menu">
                             <li>
-                                <a href="estudiantes.php" aria-expanded="true"><i class="ti-dashboard"></i><span>Inicio</span></a>
+                                <a href="index.php" aria-expanded="true"><i class="ti-dashboard"></i><span>Inicio</span></a>
                                 
                             </li>
                             
                            
                             
                             <li class="active">
-                                <a href="estudiantes.php" aria-expanded="true"><i class="fa fa-table"></i>
-                                    <span>Estudiantes</span></a>                               
+                                <a href="RT.php" aria-expanded="true"><i class="fa fa-table"></i>
+                                    <span>RT</span></a>
+                               
                             </li>
                             
-                            <li class="active">
-                                <a href="estudiantes.php" aria-expanded="true"><i class="fa fa-table"></i>
-                                    <span>Solicitar Asesoria</span></a>                               
-                            </li>
+                            
                            
                         </ul>
                     </nav>
@@ -111,6 +99,12 @@ if(isset($_SESSION['asesor'])){
                             <span></span>
                             <span></span>
                         </div>
+                        <div class="search-box pull-left">
+                            <form action="#">
+                                <input type="text" name="search" placeholder="Search..." required>
+                                <i class="ti-search"></i>
+                            </form>
+                        </div>
                     </div>
                     
                     <!-- profile info & task notification-->
@@ -126,22 +120,20 @@ if(isset($_SESSION['asesor'])){
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Estudiante</h4>
+                            <h4 class="page-title pull-left">RT</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="estudiantes.php">Inicio</a></li>
-                                <li><span>Solicitar asesorías</span></li>
+                                <li><a href="index.php">Inicio</a></li>
+                                <li><span>RT</span></li>
                             </ul>
                         </div>
                     </div>
-                    <!--Perfil -->
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
-                        <a href="perfil_estudiante.php"><img class="avatar user-thumb" src="../assets/images/author/avatar.png" alt="avatar" url=></a>
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $nombre; ?> <i class="fa fa-angle-down"></i></h4>
+                            <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['username']; ?> <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="perfil_estudiante.php">Ver perfil</a>
-                               <a class="dropdown-item" href="../exit.php">Cerrar Sesión</a>
-
+                                
+                               <a class="dropdown-item" href="index.php?logout='1'">Log Out</a>
                             </div>
                         </div>
                     </div>
@@ -150,8 +142,7 @@ if(isset($_SESSION['asesor'])){
             <!-- page title area end -->
             <div>
             
-     <h1 style="text-align:center">Estudiante</h1>
-     
+     <h1 style="text-align:center">Lista de asesores</h1>
             <body>
 
             </body>
@@ -159,49 +150,46 @@ if(isset($_SESSION['asesor'])){
                 <div class="row">
                    
                     <!-- Contextual Classes start -->
-                    <div class="col-lg-10 mt-10">
+                    <div class="col-lg-6 mt-5">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="header-title">Historial de Asesorias</h4>
                                 <div class="single-table">
                                     <div class="table-responsive">
                                         <table class="table text-dark text-center">
                                             <thead class="text-uppercase">
                                                 <tr class="table-active">
                                                     <th scope="col">ID</th>
-                                                    <th scope="col">Materia</th>
-                                                    <th scope="col">Fecha</th>
-                                                    <th scope="col">Estudiante</th>
-                                                    <th scope="col">Asesor</th>
-                                                    <th scope="col">Grupo</th>
-													<th scope="col">Carrera</th>
+                                                    <th scope="col">Nombre</th>
+                                                    <th scope="col">Carrera</th>
+                                                    <th scope="col">Celular</th>
+                                                    <th scope="col">Correo</th>
+													<th scope="col">Action</th>
 													 
 
                                                     
                                                 </tr>
                                             </thead>
                                             <tbody>
-            <?php 
-            
-               $sql = "SELECT * FROM agenda WHERE nombreEstudiante = '$nombre'";
-               $resultado = mysqli_query($con,$sql);
-               if (!empty($resultado) ) {
+			<?php 
+               $conn = new mysqli("localhost","root","","inventorymanagement");
+               $sql = "SELECT * FROM product";
+               $result = $conn->query($sql);
+					$count=0;
+               if ($result -> num_rows >  0) {
 				  
-                 while ($row = $resultado->fetch_assoc()) 
+                 while ($row = $result->fetch_assoc()) 
 				 {
+					  $count=$count+1;
                    ?>
                   
                    
                    <tr>
-                      <th><?php echo $row["idAsesoria"] ?></th>
-                      <th><?php echo $row["nombreMateria"]  ?></th>
-                      <th><?php echo $row["Fecha"]  ?></th>
-					  <th><?php echo $row["nombreEstudiante"]  ?></th>
-                      <th><?php echo $row["nombreAsesor"]  ?></th>
-                      <th><?php echo $row["grupoEstudiante"]  ?></th>
-                      <th><?php echo $row["carrera"]  ?></th>
-					  <th> <a href="up"Edit></a><a href="edit.php?id=<?php echo $row["product_id"] ?>">Edit</a> 
-                      <a href="up"Edit></a><a href="delete.php?id=<?php echo $row["product_id"] ?>">Delete</a></th>
+                    <th><?php echo $count ?></th>
+                      <th><?php echo $row["product_name"] ?></th>
+                      <th><?php echo $row["price"]  ?></th>
+                      <th><?php echo $row["quantity"]  ?></th>
+					  <th><?php echo $row["quantity"]  ?></th>
+					  <th> <a href="up"Edit</a><a href="edit.php?id=<?php echo $row["product_id"] ?>">Edit</a> <a href="up"Edit</a><a href="delete.php?id=<?php echo $row["product_id"] ?>">Delete</a></th>
                     
                       
                     </tr>
@@ -209,15 +197,18 @@ if(isset($_SESSION['asesor'])){
                  
                  }
                }
- 
+
             ?>
 
                                             </tbody>
                                         </table>
-            
+           
                                     </div>
-            
                                 </div>
+                            </div>
+            <button style="text-align:center" type="button">Ver historial de asesorias</button> 
+            <button style="text-align:center" type="button">Ver estadisticas</button> 
+                        </div>
                         <div>
 
 
@@ -241,17 +232,17 @@ if(isset($_SESSION['asesor'])){
 
     </div>
     
-    <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
     
-    <script src="../assets/js/popper.min.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/owl.carousel.min.js"></script>
-    <script src="../assets/js/metisMenu.min.js"></script>
-    <script src="../assets/js/jquery.slimscroll.min.js"></script>
-    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/metisMenu.min.js"></script>
+    <script src="assets/js/jquery.slimscroll.min.js"></script>
+    <script src="assets/js/jquery.slicknav.min.js"></script>
 
-    <script src="../assets/js/plugins.js"></script>
-    <script src="../assets/js/scripts.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/scripts.js"></script>
 </body>
 
 </html>

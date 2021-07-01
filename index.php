@@ -2,13 +2,13 @@
 include("header.php");
 require 'conexion.php';
 if(isset($_SESSION['asesor'])){
-  header("Location: asesores.php");
+  header("Location: asesor/asesores.php");
 }
 elseif(isset($_SESSION['estudiante'])){
-  header("Location: estudiantes.php");
+  header("Location: estudiante/estudiantes.php");
 }
 elseif(isset($_SESSION['rt'])){
-  header("Location: rt.php");
+  header("Location: rt/rt.php");
 }
 else{ echo '
 <!DOCTYPE html>
