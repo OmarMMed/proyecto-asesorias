@@ -35,7 +35,7 @@ CREATE TABLE Asesores(
     grado SMALLINT,
     grupo SMALLINT,
     diasDisponibles VARCHAR(40),
-    horario VARCHAR(10),
+    horario time,
     PRIMARY KEY(idAsesor)
 );
 
@@ -53,9 +53,9 @@ CREATE TABLE solicitud (
     id_materia INT,
     id_estudiante VARCHAR(8),
     estado VARCHAR(45) NOT NULL, 
-    FOREIGN KEY (id_asesor) REFERENCES asesores(idAsesor),
-    FOREIGN KEY (id_materia) REFERENCES materias(idMateria),
-    FOREIGN KEY (id_estudiante) REFERENCES estudiante(numCuenta)
+    FOREIGN KEY (id_asesor) REFERENCES asesores(idAsesor) ON DELETE CASCADE,
+    FOREIGN KEY (id_materia) REFERENCES materias(idMateria) ON DELETE CASCADE,
+    FOREIGN KEY (id_estudiante) REFERENCES estudiante(numCuenta)ON DELETE CASCADE
  );
 
 CREATE TABLE Agenda(
@@ -65,10 +65,10 @@ CREATE TABLE Agenda(
     nombreEstudiante VARCHAR(50),
     nombreAsesor VARCHAR(40),
     grupoEstudiante Varchar(3),
-    carrera VARCHAR (30),
+    carrera VARCHAR (40),
     id_sol INT,
     PRIMARY KEY(idAsesoria),
-    FOREIGN KEY (id_sol) REFERENCES solicitud(id_solicitud)
+    FOREIGN KEY (id_sol) REFERENCES solicitud(id_solicitud) ON DELETE CASCADE
 );
 
 
@@ -77,8 +77,8 @@ CREATE TABLE MateriasImpartidas(
 	idAsesor INT,
     idMateria INT,
     disponibilidad char(1),
-    FOREIGN KEY(idAsesor) REFERENCES Asesores(idAsesor),
-    FOREIGN KEY(idMateria) REFERENCES Materias(idMateria)
+    FOREIGN KEY(idAsesor) REFERENCES Asesores(idAsesor) ON DELETE CASCADE,
+    FOREIGN KEY(idMateria) REFERENCES Materias(idMateria) ON DELETE CASCADE
 );
 
 CREATE TABLE AsesoresDisp(
@@ -87,5 +87,5 @@ CREATE TABLE AsesoresDisp(
     diasDisponibles char(10),
     horario varchar(10),
     disponibilidad char(1),
-    FOREIGN KEY(idAsesor) REFERENCES Asesores(idAsesor)
+    FOREIGN KEY(idAsesor) REFERENCES Asesores(idAsesor) ON DELETE CASCADE
 );

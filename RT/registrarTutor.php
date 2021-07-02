@@ -81,7 +81,7 @@
                         {
                             echo '<h2> El usuario se ha registrado correctamente!</h2>';
                             echo '<h3> Se rediccionará a la página de inicio en unos segundos</h3>';
-                            header( "refresh:5;url=index_rt.php" );    
+                            header( "refresh:5;url=index.php" );    
                         }
                     }
                 }
