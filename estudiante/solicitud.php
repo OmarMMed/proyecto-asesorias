@@ -1,29 +1,15 @@
-
+<!DOCTYPE html>
 <?php 
-    include("../header.php");
-    require '../conexion.php';
-    if(isset($_SESSION['asesor'])){
-        header("Location: ../asesor/asesores.php");
-      }
-      elseif(isset($_SESSION['rt'])){
-        header("Location: ../rt/rt.php");
-      }
-      elseif(!isset($_SESSION['estudiante'])){
-        header("Location: ../index.php");
-      }
-      else{
-          $num = $_SESSION['estudiante'];
-    
-          $con = conectar();
-    
-        $query = "SELECT * FROM estudiante WHERE numCuenta = '$num'";
-        $result = $con->query($query);
-        $row = $result->fetch_object();
-        $nombre = $row->nombreCompleto;
-      }
+    session_start();
+    require_once("../conexion.php");
+    $con = conectar();
     $numCuenta = $_SESSION['estudiante'];
+    $_SESSION['numCuenta'] = $numCuenta;
     $queryAlumno = "SELECT * FROM estudiante 
                     WHERE numCuenta = '$numCuenta' LIMIT 1";
+    $nombre = '';
+    $grado = 0;
+    $carrera = '';
     if($datosAlumno = mysqli_query($con,$queryAlumno))
     {
         while($filaAlumno = mysqli_fetch_array($datosAlumno))
@@ -34,143 +20,60 @@
         }
     }
 ?>
-<!doctype html>
+<html lang="en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <title>Solicitud de Asesoría</title>
-        <link rel="stylesheet" href="../estilos.css">
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
-        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../assets/css/themify-icons.css">
-        <link rel="stylesheet" href="../assets/css/metisMenu.css">
-        <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="../assets/css/slicknav.min.css">
-        <!-- amchart css -->
-        <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-        <!-- others css -->
-        <link rel="stylesheet" href="../assets/css/typography.css">
-        <link rel="stylesheet" href="../assets/css/default-css.css">
-        <link rel="stylesheet" href="../assets/css/styles.css">
-        <link rel="stylesheet" href="../assets/css/responsive.css">
-        <!-- modernizr css -->
-        <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Solicitar asesorias</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../css/sty.css" rel="stylesheet" />
+
     </head>
     <body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <!-- preloader area start -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-    <!-- preloader area end -->
-    
-    <!-- page container area start -->
-    <div class="page-container">
-        <!-- sidebar menu area start -->
-        <div class="sidebar-menu">
-            <div class="sidebar-header">
-                <div class="logo">
-                    <a href="https://fic.uas.edu.mx/departamento-de-tutorias/"><img src="../assets/images/icon/logo3.png" alt="logo"></a>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="https://fic.uas.edu.mx/departamento-de-tutorias/">Departamento de tutorías</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="estudiantes.php">Regresar a Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="solicitud.php">Solicitar una asesoria</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="revisarSolicitud.php">Ver mis solicitudes</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="main-menu">
-                <div class="menu-inner">
-                    <nav>
-                        <ul class="metismenu" id="menu">
-                            <li>
-                                <a href="estudiantes.php" aria-expanded="true"><i class="ti-dashboard"></i><span>Inicio</span></a>
-                                
-                            </li>
-                            
-                           
-                            
-                            <li class="active">
-                                <a href="solicitud.php" aria-expanded="true"><i class="fa fa-table"></i>
-                                    <span>Solicitar una asesoria</span></a>                               
-                            </li>
-                            
-                            <li class="active">
-                                <a href="revisarSolicitud.php" aria-expanded="true"><i class="fa fa-table"></i>
-                                    <span>Mis asesorias</span></a>                               
-                            </li>
-                            
-
-
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-        <!-- sidebar menu area end -->
-
-
-        
-        <!-- main content area start -->
-        <div class="main-content">
-            <!-- header area start -->
-            <div class="header-area">
-                <div class="row align-items-center">
-                    <!-- nav and search button -->
-                    <div class="col-md-6 col-sm-8 clearfix">
-                        <div class="nav-btn pull-left">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                    
-                    <!-- profile info & task notification-->
-                    <div class="col-md-6 col-sm-4 clearfix">
-                        
-                    </div>
-                </div>
-            </div>
-            
-            <!-- header area end -->
-            <!-- page title area start -->
-            <div class="page-title-area">
-                <div class="row align-items-center">
-                    <div class="col-sm-6">
-                        <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Estudiante</h4>
-                            <ul class="breadcrumbs pull-left">
-                                <li><a href="estudiantes.php">Inicio</a></li>
-                                <li><a href="solicitud.php">Solicitar una asesoria</a></li>
-                                <li><a href="revisarSolicitud.php">Mis asesorias</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--Perfil -->
-                    <div class="col-sm-6 clearfix">
-                        <div class="user-profile pull-right">
-                        <a href="perfil_estudiante.php"><img class="avatar user-thumb" src="../assets/images/author/avatar.png" alt="avatar" url=></a>
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $nombre; ?> <i class="fa fa-angle-down"></i></h4>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="perfil_estudiante.php">Ver perfil</a>
-                               <a class="dropdown-item" href="../exit.php">Cerrar Sesión</a>
-
-                            </div>
+        </nav>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h2>"Todos nuestros sueños se pueden volver realidad si tenemos el coraje de perseguirlos."</h2>
+                            <span class="subheading">Walt Disney</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- page title area end -->
-            <div>
-            
-     <h1 style="text-align:center">Estudiante</h1>
-     
-            <body>
+        </header>
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
 
-            </body>
-            <div class="main-content-inner">
-                <div class="row">
-
-    <div class="contenedor">
+        <!-- Footer-->
+        <footer class="border-top">
+        <div class="contenedor">
             <?php if(empty($_POST['grado']) && empty($_POST['materia']) || isset($_GET['error'])) : ?>
             <h2>Selecciona el semestre del que desea tomar asesorías</h2>
             <?php
@@ -188,8 +91,11 @@
                                 echo "<option value='$i'>$i</option>";
                             }
                         ?>
-                    </select>
-                <input type="submit" value="Elegir grado">
+                    </select><br>
+            <div><br>
+            <input type="submit" value="Elegir grado">
+                        </dvi>
+                
                 </form>
             <?php endif; ?>
             <?php if (isset($_POST['grado']) && empty($_POST['materia'])) : ?>      
@@ -366,9 +272,7 @@
                         if($info['ya_registrado'])
                         {
                             $error = "Usted ya ha aplicado para asesoría en esa materia";
-                            echo '<script type="text/javascript">alert("Ya solicito esta materia");</script>';
-                            echo '<meta http-equiv="refresh" content="0;url="solicitud.php?error=$error';
-                            //header("Location:solicitud.php?error=$error");
+                            header("Location:solicitud.php?error=$error");
                         }
                         else
                         {
@@ -387,7 +291,10 @@
                 }
                 ?>
         </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../js/scripts.js"></script>
     </body>
-
-
-<?php include("footer_estudiante.php"); ?>
+</html>
