@@ -1,17 +1,6 @@
 <?php
-include("../header.php");
-require ("../conexion.php"); 
+include("cabecera_estudiante.php");
 
-if(isset($_SESSION['asesor'])){
-    header("Location: ../asesores/asesores.php");
-}
-elseif(isset($_SESSION['rt'])){
-    header("Location: ../RT/login_rt.php");
-}
-  //confirmar inicio de sesión del RT
-if(!isset($_SESSION['estudiante'])){
-    header("Location: ../index.php");
-}
 $num = $_SESSION['estudiante'];
 
 $con = conectar();
@@ -43,7 +32,6 @@ $con = conectar();
 </head>
 <body>
 
-    <div class="main">
     
         <!-- Sign up form -->
         <section class="signup">
@@ -59,22 +47,26 @@ $con = conectar();
                                 echo '<strong style="color: red">'. $error .'</strong><br>';
                             }
                             ?>
+                            <labe>Numero de Cuenta:</label>
                             <input type="text" name="id" pattern="[0-9]*" minlength="8" maxlength="8" value="<?=$_numCuenta?>" readonly=»readonly>
                             </p>
+                            <labe>Nombre:</label>
                             <input type="text" name="nombre" pattern="[A-Za-z áéíóúñ]*" maxlength="50" placeholder="Nombre completo" value="<?=$_nombre?>">
                             </p>
+                            <labe>Correo electronico:</label>
                             <input type="email" name="correo" maxlength="40" placeholder="Correo Electronico" value=<?=$_correo?>>
                             </p>
+                            <labe>Celular:</label>
                             <input type="text" name="telefono" pattern="[0-9]*" minlength="10" maxlength="10" placeholder="Celular" value=<?=$_celular?>>
                             </p>
-                            <input type="submit" value="Editar perfil" name="editar">
+                            <input type="submit"  class="btn btn-success" value="Editar perfil" name="editar">
                         </form>
 
                         <form action="borrar_estudiante.php" method="POST" onsubmit="if(!confirm('Seguro que desea borrar?')){return false;}">
-                            <input type="submit" value="borrar perfil" name="borrar">
+                            <input type="submit" class="btn btn-danger" value="borrar perfil" name="borrar">
                         </form>
                         <form action="estudiantes.php">
-                            <input type="submit" value="Regresar" >
+                            <input type="submit" class="btn btn-primary" value="Regresar" >
                         </form>
                     </div>
                     <div class="signup-image">
@@ -84,11 +76,6 @@ $con = conectar();
                 </div>
             </div>
         </section>
-       
-    </div>
 
-    <!-- JS -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="js/main.js"></script>
-    <script>
-        
+
+<?php include("footer_estudiante.php") ?>

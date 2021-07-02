@@ -1,16 +1,14 @@
 <?php
 include("header.php");
 require 'conexion.php';
-if(isset($_SESSION['asesor'])){
+
+if(isset($_SESSION['asesor'])) :
   header("Location: asesor/asesores.php");
-}
-elseif(isset($_SESSION['estudiante'])){
+
+elseif(isset($_SESSION['estudiante'])) :
   header("Location: estudiante/estudiantes.php");
-}
-elseif(isset($_SESSION['rt'])){
-  header("Location: rt/rt.php");
-}
-else{ echo '
+
+else : ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +40,7 @@ else{ echo '
                         <form method="POST" class="register-form" action="includes/login.inc.php" method="post">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input class="Field" type="text" placeholder="Numero de cuenta" name="num"/>
+                                <input class="Field" type="text" placeholder="Numero de cuenta" name="num" pattern="[0-9]+"/>
                             </div>
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
@@ -81,4 +79,5 @@ else{ echo '
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="js/main.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-</html>'; } ?>
+</html>
+<?php endif; ?>

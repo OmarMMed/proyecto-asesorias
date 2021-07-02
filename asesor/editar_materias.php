@@ -19,6 +19,16 @@ echo '<h2> El usuario se ha registrado correctamente!</h2>';
 
 $con = conectar();
 $id = $_SESSION['asesor'];
+if
+(
+    empty($_POST['primero']) && empty($_POST['segundo']) &&
+    empty($_POST['tercero']) && empty($_POST['cuarto']) &&
+    empty($_POST['quinto'])
+)
+{
+    $error = "No ha seleccionado ninguna materia.";
+    header("Location:perfil_asesor.php?error=$error");
+}
 
 //Eliminar datos exitentes
 $sql = "DELETE FROM materiasimpartidas WHERE idAsesor = '$id'";

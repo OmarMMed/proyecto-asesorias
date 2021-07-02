@@ -97,7 +97,7 @@ if(empty($_POST['numCuenta']) || empty($_POST['nombreCompleto']) || empty($_POST
       else
       {
         echo "<h2>Se guardo correctamente</h2>";
-        header( "refresh:3;url=index.php" );
+        header( "refresh:3;url=../index.php" );
       }
     }
     $conn ->close();

@@ -1,17 +1,6 @@
 <?php
-include("../header.php");
-require ("../conexion.php");
+include("cabecera_asesor.php");
 
-if(isset($_SESSION['estudiante'])){
-    header("Location: ../estudiante/estudiantes.php");
-  }
-  elseif(isset($_SESSION['rt'])){
-    header("Location: ../RT/login_rt.php");
-  }
-  //confirmar inicio de sesión del RT
-  if(!isset($_SESSION['asesor'])){
-    header("Location: ../login.php");
-}
 
 
 
@@ -27,7 +16,7 @@ $con = conectar();
     </head>
     <body>
 <div class="contenedor">
-    <h2>Elege las nuevas materias que quieres impartir</h2>
+    <h2>Elija las nuevas materias que quieres impartir</h2>
     <form method="post" action="editar_materias.php">
                 <?php
                     if (isset($_GET['error']))
@@ -161,12 +150,16 @@ $con = conectar();
                         ?>
                     </select>
                 </p>
-                <input type="submit" value="Elegir materias">
+                <h3>Para elegir más de dos materias presione Ctrl + Click Izquierdo sobre el nombre de la materia</h3>
+                <input type="submit" class="btn btn-success"  value="Elegir materias">
             </form>
             <form action="perfil_asesor.php">
-                    <input type="submit" value="Regresar" name="registro">
-            </form>
+                    <input type="submit" class="btn btn-primary" value="Regresar" name="registro">
+        </form>
 </div>
+
+
 
 </body>
 </html>
+<?php include('footer_asesor.php') ?>

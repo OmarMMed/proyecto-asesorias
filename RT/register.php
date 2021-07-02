@@ -38,16 +38,16 @@
                             </p>
                             <input type="text" name="telefono" pattern="[0-9]*" minlength="10" maxlength="10" placeholder="Celular">
                             </p>
-                            <input type="password" name="pass" maxlength="20"placeholder="Contraseña">
+                            <input type="password" name="pass" minlength="7" maxlength="20" placeholder="Contraseña">
                             </p>
-                            <input type="password" name="confirmar" maxlength="20"placeholder="Confirme Contraseña">
+                            <input type="password" name="confirmar" minlength="7" maxlength="20" placeholder="Confirme Contraseña">
                             </p>
                             <input type="submit" value="Registrar Tutor" name="registro">
                         </form>
                     </div>
                     <div class="signup-image">
                         <figure><img src="../images/signup-image.jpg" alt="sing up image"></figure>
-                        <a href="index_rt.php" class="signup-image-link">I am already member</a>
+                        <a href="index.php" class="signup-image-link">Ya soy un usuario</a>
                     </div>
                 </div>
             </div>

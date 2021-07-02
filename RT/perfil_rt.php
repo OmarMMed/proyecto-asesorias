@@ -211,17 +211,17 @@ elseif(isset($_SESSION['estudiante'])){
                             <labe>Celular</label>
                             <input type="text" name="telefono" pattern="[0-9]*" minlength="10" maxlength="10" placeholder="Celular" value=<?=$_celular?>>
                             </p>
-                            <input type="submit" value="Guardar cambios" name="editar">
+                            <input type="submit" class="btn btn-success" value="Guardar cambios" name="editar">
                         </form>
 
                         <form action="borrar_rt.php" method="POST" onsubmit="if(!confirm('Seguro que desea borrar?')){return false;}">
-                            <input type="submit" value="borrar perfil" name="borrar">
-                        </form>
-                    </div>
-                    <div class="signup-image">
-                        <figure><img src="../images/signup-image.jpg" alt="sing up image"></figure>
-                        <a href="" class="signup-image-link"></a>
-                    </div>
+                            <input type="submit" class="btn btn-danger" value="borrar perfil" name="borrar">
+                        </form><br>
+                    </div><br>
+                        <div class="signup-image">
+                            <figure><img src="../images/signup-image.jpg" alt="sing up image"></figure>
+                            <a href="" class="signup-image-link"></a>
+                        </div>
                 </div>
             </div>
         </section>

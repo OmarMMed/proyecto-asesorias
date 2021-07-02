@@ -1,6 +1,5 @@
 <?php
-    require_once("../conexion.php");
-    session_start();
+    include("cabecera_asesor.php");
     $con = conectar();
     $esEstutudiante = "";
     if(!empty($_SESSION['estudiante'])){
@@ -18,7 +17,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <title>Solicitud de Asesoría</title>
-        <link rel="stylesheet" href="../estilos.css">
+
         <script>
         </script>
     </head>
@@ -39,7 +38,7 @@
                         <option value='Rechazado'>Solicitudes Rechazadas</option>
                         <option value='Cancelado'>Solicitudes Canceladas</option>
                     </select>
-                    <input type='submit' value='Cambiar'>
+                    <input type='submit' class='btn btn-dark' value='Cambiar'>
                     </form>";
                     $estado = "";
                     $heather = "";
@@ -89,34 +88,30 @@
                     {
                         if(mysqli_num_rows($result) > 0)
                         {
-                            echo "<table>
+                            echo "<div class='single-table'>
+                            <div class='table-responsive'>
+                                <table class='table text-dark text-center'>
+                                    <thead class='text-uppercase'>
+                                        <tr class='table-active'>
                                 <tr><th>Nombre Asesorado</th>
                                 <th>Materia que solicita</th>
                                 <th>Grado y Grupo del Asesorado</th>
-                                <th>Estado</th>";
-                                if($estado == "Pendiente")
-                                {
-                                    echo "<th>Aceptar</th>
-                                    <th>Rechazar</th></tr>";
-                                }
-                                else if($estado == "Aceptado")
-                                {
-                                    echo "<th>Cancelar</th></tr>";
-                                }
-                                else 
-                                {
-                                    echo "</tr>";
-                                }
+                                <th>Estado</th>
+                                
+                                </tr>
+                                </thead>
+                                <tbody>";
+                             
                             
                             while($rows = mysqli_fetch_assoc($result))
                             {
                                 $msg = "";
                                 $idSolicitud = $rows['idSol'];
                                 echo "<tr>";
-                                echo "<td>" . $rows['nombreE'] . "</td>";
-                                echo "<td>" . $rows['nombreMat'] . "</td>";
-                                echo "<td>" . $rows['gradito'] . "-" . $rows['grupito'] . "</td>";
-                                echo "<td>" . $rows['estado'] . "</td>";
+                                echo "<th>" . $rows['nombreE'] . "</th>";
+                                echo "<th>" . $rows['nombreMat'] . "</th>";
+                                echo "<th>" . $rows['gradito'] . "-" . $rows['grupito'] . "</th>";
+                                echo "<th>" . $rows['estado'] . "</th>";
                                 if($estado == "Pendiente")
                                 {
                                     echo "<td><button><a href='revisarSolicitud.php?sol=$aceptada&idSol=$idSolicitud' onclick='if(!confirm(\"¿Seguro que desea aceptar la solicitud?\")){return false;}'>Aceptar</a></button></td>";
@@ -124,7 +119,7 @@
                                 }
                                 else if($estado == "Aceptado")
                                 {
-                                    echo "<td><button><a href='revisarSolicitud.php?sol=$cancelada&idSol=$idSolicitud' onclick='if(!confirm(\"¿Seguro que desea cancelar la solicitud?\")){return false;}'>Cancelar</a></buton></td>";
+                                    echo "<th><button><a href='revisarSolicitud.php?sol=$cancelada&idSol=$idSolicitud' onclick='if(!confirm(\"¿Seguro que desea cancelar la solicitud?\")){return false;}'>Cancelar</a></buton></th>";
                                 }
                                 echo "</tr>";
                             }
@@ -181,8 +176,8 @@
                                                 VALUES ('$nombreMat','$fecha','$nombreEstudiante','$nombreAsesor','$grupoEstudiante','$carrera',$idSolicitud)";
                                     if($result2 = mysqli_query($con,$sqlAgendar))
                                     {
-                                        "<h2>Se ha aceptado su solicitud correctamente</h2>";
-                                        header( "refresh:2;url=revisarSolicitud.php");
+                                        echo '<script type="text/javascript">alert("Se ha aceptado la solicitud correctamente");</script>';
+                                        echo '<meta http-equiv="refresh" content="0;url="solicitud.php?error=$error';
                                     }
                                 }
                             }
@@ -204,7 +199,7 @@
                                                     WHERE id_sol = $idSolicitud";
                                 $resultBorrar = mysqli_query($con,$sqlBorrarAgenda);
                             }
-                            header( "refresh:2;url=revisarSolicitud.php");
+                            echo '<meta http-equiv="refresh" content="0;url="solicitud.php';
                         }
                     }
                 }
@@ -266,11 +261,18 @@
                     {
                         if(mysqli_num_rows($result) > 0)
                         {
-                            echo "<table>
+                            echo "<div class='single-table'>
+                            <div class='table-responsive'>
+                                <table class='table text-dark text-center'>
+                                    <thead class='text-uppercase'>
+                                        <tr class='table-active'>
                                 <tr><th>Nombre Asesor</th>
                                 <th>Materia que solicita</th>
                                 <th>Grado y Grupo del Asesorado</th>
-                                <th>Estado</th>";
+                                <th>Estado</th>
+                                </tr>
+                                </thead>
+                                <tbody>";
                             if($estado == "Aceptado") echo "<th>Cancelar</th></tr>";
                             else echo "</tr>";
                             while($rows = mysqli_fetch_assoc($result))
@@ -307,7 +309,7 @@
                         $sqlBorrarAgenda = "DELETE FROM Agenda
                                             WHERE id_sol = $idSolicitud";
                         $resultBorrar = mysqli_query($con,$sqlBorrarAgenda);
-                        header( "refresh:2;url=revisarSolicitud.php");
+                        echo '<meta http-equiv="refresh" content="0;url="solicitud.php';
                     }
                 }
             }
@@ -315,3 +317,4 @@
         </div>
     </body>
 </html>
+<?php include('footer_asesor.php') ?>
