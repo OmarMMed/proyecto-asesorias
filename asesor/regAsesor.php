@@ -70,7 +70,11 @@
                         <input type="time" name="horario" min="08:00" max="19:00"> <label>Toma en cuenta que una buena asesoria dura minimo 1 hora</label>
                         </p>    
                         <input type="submit" value="Registrarse" name="registro">
+                      
+  <a href="../index.php" class="signup-image-link">Ya soy un usuario</a>
+
                 </form>
+                
         </div>
     </body>
 </html>

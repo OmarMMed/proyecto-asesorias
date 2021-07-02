@@ -106,8 +106,8 @@
                                 <thead class='text-uppercase'>
                                     <tr class='table-active'>
                             <tr><th>Nombre Asesorado</th>
-                            <th>Materia que solicita</th>
-                            <th>Grado y Grupo del Asesorado</th>
+                            <th>Dias Disponibles</th>
+                            <th>Grado y Grupo del Asesor</th>
                             <th>Estado</th>
                             
                             </tr>

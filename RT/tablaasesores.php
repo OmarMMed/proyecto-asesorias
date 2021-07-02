@@ -178,7 +178,7 @@ elseif(isset($_SESSION['estudiante'])){
                                                     <th scope="col">ID Asesor</th>
                                                     <th scope="col">Correo</th>
                                                     <th scope="col">Nombre</th>
-                                                    <th scope="col">pPassword</th>
+                                                    <th scope="col">Password</th>
                                                     <th scope="col">Celular</th>
                                                     <th scope="col">Carrera</th>
 													<th scope="col">Grupo</th>

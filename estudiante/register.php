@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <title>Document</title><!-- Font Icon -->
+    <title>Estudiante</title><!-- Font Icon -->
     <link rel="stylesheet" href="../fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
@@ -67,7 +67,7 @@
 <form action="registro_estudiantes_BD.php" method="POST">
   <div class="mb-3">
   
-    <input required name="numCuenta" type="text" class="form-control" placeholder="Ingrese su número de cuenta" id="txtId" value="" onkeypress="return valideKey(event);">
+    <input required name="numCuenta" pattern="[0-9]*" minlength="8" maxlength="8" type="text" class="form-control" placeholder="Ingrese su número de cuenta" id="txtId" value="" onkeypress="return valideKey(event);">
   </div>
   
 

@@ -75,7 +75,7 @@
         <footer class="border-top">
         <div class="contenedor">
             <?php if(empty($_POST['grado']) && empty($_POST['materia']) || isset($_GET['error'])) : ?>
-            <h2>Selecciona el semestre del que desea tomar asesorías</h2>
+            <h2>Selecciona el año del que desea tomar asesorías</h2>
             <?php
                 if(isset($_GET['error']))
                 {
